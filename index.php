@@ -52,7 +52,8 @@ if(!login()){
                                 <button type="button" class="btn btn-primary btn-block" onclick="login()">Login</button>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <div class="spinner-border text-primary text-center" role="status" id="loading" style="display: none;">
+                                <div class="spinner-border text-primary text-center" role="status" id="loading"
+                                    style="display: none;">
                                     <span class="sr-only">Loading...</span>
                                 </div>
                             </div>
@@ -68,38 +69,38 @@ if(!login()){
     <script src="js/all.js"></script>
     <script src="js/master.js"></script>
     <script>
-        function login(){
+        function login() {
             $('#loading').toggleClass('d-block');
             $('#password').removeClass('is-invalid');
             $('#username').removeClass('is-invalid');
             $('#invalid-username').html('');
             $('#invalid-password').html('');
             $.ajax({
-                url : 'login.php',
-                type : 'post',
-                data : $('#login-form').serialize(),
-                success : function(response){
-                    if(response=='username_error'){
+                url: 'login.php',
+                type: 'post',
+                data: $('#login-form').serialize(),
+                success: function (response) {
+                    if (response == 'username_error') {
                         $('#loading').toggleClass('d-block');
                         $('#username').addClass('is-invalid');
                         $('#invalid-username').html('invalid username');
                     }
-                    if(response=='empty_username'){
+                    if (response == 'empty_username') {
                         $('#loading').toggleClass('d-block');
                         $('#username').addClass('is-invalid');
                         $('#invalid-username').html('required');
                     }
-                    if(response=='password_error'){
+                    if (response == 'password_error') {
                         $('#loading').toggleClass('d-block');
                         $('#password').addClass('is-invalid');
                         $('#invalid-password').html('invalid password');
                     }
-                    if(response=='empty_password'){
+                    if (response == 'empty_password') {
                         $('#loading').toggleClass('d-block');
                         $('#password').addClass('is-invalid');
                         $('#invalid-password').html('required');
                     }
-                    if(response=='success'){
+                    if (response == 'success') {
                         window.location.href = "http://localhost/login/home.php";
                     }
                 }
